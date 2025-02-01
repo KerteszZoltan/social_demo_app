@@ -1,0 +1,21 @@
+.todo_page{
+    font-size: 1rem;
+    position: relative;
+    top: 20%;
+    height: 100%;
+    width: 95%;
+    text-align: center;
+
+    &_container{
+        display: flex;
+        flex-direction: column;
+        &_desc{
+            position: relative;
+            left: 2.5%;
+            text-align: left;
+        }
+        &_list{
+            text-align: left;
+        }
+    }
+}

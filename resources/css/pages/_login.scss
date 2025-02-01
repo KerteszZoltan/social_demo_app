@@ -1,0 +1,18 @@
+.login_form_container {
+  width: 60%;
+  padding-top: 5%;
+  justify-self: center;
+
+  &_title{
+    text-align: center;
+    font-size: 2rem;
+  }
+  &_btn_container{
+    width: 100%;
+    text-align: center;
+
+    &_btn{
+        width: 40%;
+    }
+  }
+}
