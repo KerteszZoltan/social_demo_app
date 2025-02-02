@@ -16,7 +16,7 @@ class UserMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if(!$request->user()){
-            return response()->json(['message' => 'Access denied'], 403);
+            return redirect()->route('home')->withErrors(['error'=>'Access denied']);
         }
         return $next($request);
     }

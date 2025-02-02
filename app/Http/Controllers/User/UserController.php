@@ -5,17 +5,20 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 
+
+use Illuminate\Support\Facades\Auth;
+
+
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
     public function index(){
-
-        $users = User::all();
+        $users = User::where('id', '!=', Auth::user()->id)->orderBy('active', 'asc')->get();
         return view('users',['users' => $users]);
     }
 
-    public function update(Request $request){
+    public function updateAdmin(Request $request){
         if ($request->admin == 'on') {
             $request->admin = 1;
         }else{
@@ -28,15 +31,20 @@ class UserController extends Controller
             $request->active=0;
 
         }
-        $user = User::where('id', $request->id)
+        try {
+            $user = User::where('id', $request->id)
                 ->update([
                     'admin' => $request->admin,
                     'active'=> $request->active,
                 ]);
-        $updatedUser = User::where('id', $request->id)->get();
 
-        print $user;
-        print '////////////';
-        print $updatedUser;
+            return redirect()->route('allusers');
+        } catch (\Throwable $th) {
+            return back()->withErrors([
+                'error' => 'The saving process is not complete',
+            ]);
+        }
     }
+
+
 }

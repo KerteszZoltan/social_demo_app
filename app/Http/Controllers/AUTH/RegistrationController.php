@@ -22,9 +22,6 @@ class RegistrationController extends Controller
         ]);
         $checkEmail = User::where('email','=',$request->email)->count();
         $userCount = User::all()->count();
-
-
-
         if ($userCount==0) {
             User::create([
                 'name' => $request->name,
@@ -44,8 +41,10 @@ class RegistrationController extends Controller
                 'password' => Hash::make($request->password)
             ]);
             return redirect()->route('home');
+        }else{
+            return redirect()->back()->withErrors(['msg'=>'The email is already used']);
         }
-        return redirect()->back()->withErrors(['message' => 'HIBA'])->withInput();
-        
+
+
     }
 }

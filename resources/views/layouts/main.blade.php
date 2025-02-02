@@ -47,19 +47,14 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{ route('allusers') }}">Users</a>
+                <a class="nav-link active" aria-current="page" href="{{ route('allUsers') }}">Users</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Friends</a>
+                <a class="nav-link" href="{{route('allFriends')}}">Friends</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Notifications</a>
               </li>
-              @if (Auth::user()->admin)
-              <li class="nav-item">
-                <a class="nav-link" href="#">Activate pending users</a>
-              </li>
-              @endif
               <li class="nav-item">
                 <form action="{{ route('logout') }}" method="post">
                   @csrf

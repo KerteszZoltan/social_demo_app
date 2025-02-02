@@ -10,9 +10,9 @@
     @endif
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Name</label>
-        <input type="text" class="form-control" id="name" name="name" placeholder="Gipsz Jakab">
+        <input type="text" class="form-control" id="name" name="name" placeholder="Gipsz Jakab" value="{{old('name')}}">
         <label for="exampleFormControlInput1" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+        <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" value="{{old('email')}}">
         <label for="inputPassword5" class="form-label">Password</label>
         <input type="password" id="password" name="password" class="form-control" aria-describedby="passwordHelpBlock">
         <label for="inputPassword5" class="form-label">Password again</label>
