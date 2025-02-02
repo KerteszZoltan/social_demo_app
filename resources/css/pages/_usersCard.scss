@@ -1,0 +1,16 @@
+.usersForm{
+    padding-top: 2%;
+    justify-self: center;
+    background-color: transparent;
+    background: none;
+
+    &_usersCard{
+        width: fit-content;
+        text-align: center;
+
+        &_saveButton{
+            padding-bottom: 2%;
+        }
+    }
+}
+
