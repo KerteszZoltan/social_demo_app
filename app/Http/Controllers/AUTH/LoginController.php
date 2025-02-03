@@ -21,14 +21,21 @@ class LoginController extends Controller
             'password' => 'required | min:8 | max:20'
         ]);
 
-        if (Auth::attempt($request->only('email', 'password'))) {
-            return redirect()->route('home');
+        $credentials = $request->only('email', 'password');
+        $user = User::where('email', $request->email)->first();
+
+        if($user && $user->active){
+            if (Auth::attempt($credentials)) {
+                return redirect()->route('home');
+            }else{
+                return back()->withErrors([
+                    'email' => 'Wrong password or email',
+                ])->onlyInput('email');
+            }
+        }else{
+            return back()->withErrors([
+                'email' => 'The account is inactive',
+            ])->onlyInput('email');
         }
- 
-        return back()->withErrors([
-            'email' => 'Hibas email vagy jelszo',
-        ])->onlyInput('email');
-
-
     }
 }

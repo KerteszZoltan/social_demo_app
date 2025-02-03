@@ -32,9 +32,19 @@ class FriendController extends Controller
         $friends = Friend::join('users', 'friends.friend_id' ,'=', 'users.id')
         ->where([
             ['owner_id', Auth::user()->id],
-        ])->select('users.name', 'users.email', 'friends.pending', 'friends.accepted')
+        ])->select('users.name', 'users.email', 'friends.pending', 'friends.accepted','friends.id')
         ->get();
 
         return view('friends', ['friends'=>$friends]);
+    }
+
+    public function delete(Request $request){
+        try {
+            Friend::where('id', $request->id)->delete();
+            return redirect()->route('allFriends');
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['msg' => 'Delete not working']);
+        }
+
     }
 }

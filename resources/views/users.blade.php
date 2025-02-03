@@ -3,7 +3,9 @@
 
 @if ($errors->any())
     @foreach ($errors->all() as $error )
+    <div class="first_error">
         {{$error}}
+    </div>
     @endforeach
 @endif
 

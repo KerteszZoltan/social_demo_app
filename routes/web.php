@@ -28,4 +28,5 @@ Route::group(['middleware'=>UserMiddleware::class], function(){
     Route::post('/users', [UserController::class, 'updateAdmin']);
     Route::post('/users', [FriendController::class, 'addFriend'])->name('addFriend');
     Route::get('/friends', [FriendController::class, 'friends'])->name('allFriends');
+    Route::post('/friends', [FriendController::class, 'delete'])->name('deleteFriend');
 });

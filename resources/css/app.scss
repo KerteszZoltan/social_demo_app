@@ -2,7 +2,15 @@
 @use "./pages/login.scss";
 @use "./pages/registration";
 @use "./pages/usersCard";
+@use "./pages/friends";
 body{
     background-color: grey;
     color: white;
 }
+
+.first_error{
+    width: 100%;
+    text-align: center;
+    margin-top: 2%;
+}
+
