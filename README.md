@@ -1,11 +1,12 @@
 Project description:<br>
-*bárki regisztrálhat, a regisztrációkor bekérendő adatok: név, email cím, jelszó
-*nem kell email értesítés, az admin felhasználó bírálja el a regisztrációs igényeket
-*az engedélyezett felhasználók az email címük és jelszavuk beírásával beléphetnek a rendszerbe
-*a rendszerben szereplő felhasználókat listázhatják és ismerősnek jelölhetik.
-*Az ismerősnek jelölésről a másik felhasználó értesítést kap. Ha legközelebb belép, eldöntheti, hogy elfogadja-e az ismerősnek jelölést (vissza is utasíthatja).
-*Mindkét esetben a jelölő felhasználó erről értesítést kap.
-
+<ul>
+<li>bárki regisztrálhat, a regisztrációkor bekérendő adatok: név, email cím, jelszó
+<li>nem kell email értesítés, az admin felhasználó bírálja el a regisztrációs igényeket
+<li>az engedélyezett felhasználók az email címük és jelszavuk beírásával beléphetnek a rendszerbe
+<li>a rendszerben szereplő felhasználókat listázhatják és ismerősnek jelölhetik.
+<li>Az ismerősnek jelölésről a másik felhasználó értesítést kap. Ha legközelebb belép, eldöntheti, hogy elfogadja-e az ismerősnek jelölést (vissza is utasíthatja).
+<li>Mindkét esetben a jelölő felhasználó erről értesítést kap.
+</ul
 The project is containerized, so if you want run it, need setup the Docker.<br> 
 
 After download need regenerate the autoload files with "composer install" command.<br>
