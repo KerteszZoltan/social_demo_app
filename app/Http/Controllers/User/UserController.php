@@ -31,19 +31,12 @@ class UserController extends Controller
             $request->active=0;
 
         }
-        try {
-            $user = User::where('id', $request->id)
+        $user = User::where('id', $request->id)
                 ->update([
                     'admin' => $request->admin,
                     'active'=> $request->active,
                 ]);
-
-            return redirect()->route('allusers');
-        } catch (\Throwable $th) {
-            return back()->withErrors([
-                'error' => 'The saving process is not complete',
-            ]);
-        }
+            return redirect()->route('allUsers');
     }
 
 

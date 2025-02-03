@@ -1,0 +1,10 @@
+.notification{
+    width: 50%;
+    justify-self: center;
+    background-color: lightgrey;
+    text-align: center;
+    padding: 1%;
+    &_btn{
+        width: 30%;
+    }
+}

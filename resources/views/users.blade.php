@@ -3,9 +3,7 @@
 
 @if ($errors->any())
     @foreach ($errors->all() as $error )
-    <div class="first_error">
         {{$error}}
-    </div>
     @endforeach
 @endif
 
@@ -30,13 +28,14 @@
             </div>
                 <button type="submit" class="btn btn-light" name="id" value="{{$user->id}}">Save</button>
             @endif
+</form>
+
             <form action="{{route('addFriend')}}" method="POST">
                 @csrf
                 <button type="submit" class="btn btn-light" name="id" value="{{$user->id}}">Add Friend</button>
             </form>
             </div>
         </div>
-</form>
 @endforeach
 
 @endif

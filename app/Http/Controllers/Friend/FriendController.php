@@ -5,6 +5,12 @@ namespace App\Http\Controllers\Friend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Friend;
+use App\Models\User;
+use Illuminate\Support\Facades\Notification;
+
+
+use App\Notifications\AddFriendNotification;
+
 
 use Illuminate\Support\Facades\Auth;
 
@@ -18,9 +24,12 @@ class FriendController extends Controller
 
         if($exist == 0){
             Friend::create([
-                'owner_id' => Auth::user()->id,
                 'friend_id' =>$request->id,
+                'owner_id' => Auth::user()->id,
             ]);
+            $sender= Auth::user();
+            $recevier = User::where('id','=',$request->id)->first();
+            $recevier->notify( new AddFriendNotification($sender,'I want add you to my friends list'));
         }else{
             return redirect()->back()->withErrors(['msg'=>'He/she your friend']);
         }
@@ -32,19 +41,18 @@ class FriendController extends Controller
         $friends = Friend::join('users', 'friends.friend_id' ,'=', 'users.id')
         ->where([
             ['owner_id', Auth::user()->id],
-        ])->select('users.name', 'users.email', 'friends.pending', 'friends.accepted','friends.id')
+        ])->select('users.name', 'users.email', 'friends.pending','friends.declined', 'friends.accepted','friends.id')
         ->get();
 
         return view('friends', ['friends'=>$friends]);
     }
 
     public function delete(Request $request){
-        try {
-            Friend::where('id', $request->id)->delete();
-            return redirect()->route('allFriends');
-        } catch (\Throwable $th) {
-            return redirect()->back()->withErrors(['msg' => 'Delete not working']);
-        }
+
+        Friend::where('id', $request->id)->delete();
+        return redirect()->route('allFriends');
 
     }
+
+
 }

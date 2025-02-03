@@ -53,7 +53,7 @@
                 <a class="nav-link" href="{{route('allFriends')}}">Friends</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Notifications</a>
+                <a class="nav-link" href="{{route('allNotifications')}}">Notifications</a>
               </li>
               <li class="nav-item">
                 <form action="{{ route('logout') }}" method="post">
