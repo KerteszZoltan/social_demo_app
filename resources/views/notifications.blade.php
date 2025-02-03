@@ -8,9 +8,10 @@
     </div>
     @endforeach
 @endif
-<h1>
-    New Notifications
-</h1>
+
+    <div class="title">
+        <h2>New Notifications</h2>
+    </div>
 <ul>
 @foreach ($unreadNotifications as $notification)
 <div class="list-group notification">
@@ -44,9 +45,10 @@
 </div>
 @endforeach
 </ul>
-<h1>
-    Read Notifications
-</h1>
+
+<div class="title">
+    <h2>Read Notifications</h2>
+</div>
 <ul>
     @if (isset($readNotifications))
     @foreach ($readNotifications as $notification)
@@ -55,8 +57,6 @@
             <h5 class="mb-1">{{ $notification->data['sender_name'] }}</h5>
           </div>
           <p class="mb-1">{{ $notification->data['message'] }}</p>
-          <div>
-          </div>
     </div>
     @endforeach
     @endif
